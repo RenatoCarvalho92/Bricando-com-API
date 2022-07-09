@@ -39,6 +39,17 @@ async function btnClicked(){
 // .then(console.log(response))
 // .catch(console.log('não funcionou'))
 
+async function valores (valorResposta){
+    let valorTest = await valorResposta.json();
+    console.log(valorTest)
+    imgNasaConteudo.src = valorTest.hdurl;    
+}
+
+
+
 fetch('https://api.nasa.gov/planetary/apod?api_key='+NASAApiKey,options)
-.then(response => imgNasaConteudo.src = response.url)
+.then(response => {valores(response)})
 .catch(console.log('não funcionou'))
+
+
+
