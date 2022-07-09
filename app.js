@@ -1,12 +1,14 @@
 let btnBusca = document.getElementById('btnClick')
 let imgNasaConteudo = document.getElementById("imagemNasa")
+let datasParaApi =2021;
 
 btnBusca.addEventListener('click',btnClicked)
 
 const options = {
     method: 'GET',
     mode:'cors',
-    cache:'default'
+    cache:'default',
+    
 }
 let NASAApiKey = '95uixcaej6dDtUAEEYestJkuopfTuRmYykRVjMSs';
 
@@ -47,7 +49,7 @@ async function valores (valorResposta){
 
 
 
-fetch('https://api.nasa.gov/planetary/apod?api_key='+NASAApiKey,options)
+fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASAApiKey}&date=${datasParaApi.toString()}-01-01`,options)
 .then(response => {valores(response)})
 .catch(console.log('não funcionou'))
 
